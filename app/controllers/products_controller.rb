@@ -18,12 +18,14 @@ class ProductsController < ApplicationController
   end
 
   def index
+    @products = Product.all
   end
 
   def destroy
   end
 
   def show
+    @product = Product.find(params[:id])
   end
 
   private
