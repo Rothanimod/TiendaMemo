@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       flash[:notice] = 'The product has been saved'
-      redirect_to @product
+      redirect_to product_path(id: @product.id, it_was: 'created')
     else
       @erros = @product.errors
       render :new
@@ -16,6 +16,16 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      flash[:notice] = 'Product was successfully updated'
+      redirect_to product_path(id: @product.id, it_was: 'updated')
+    else
+      render :edit
+    end
   end
 
   def index
@@ -31,6 +41,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @action = params[:it_was]
   end
 
   private
