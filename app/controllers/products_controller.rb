@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:edit, :show, :destroy, :update]
+  #before_action :bring_categories, only: [:edit, :new, :create] Failed experiment
   def new
     @product = Product.new
   end
@@ -44,10 +45,14 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :reference, :price, :quantity, :brand, :description)
+    params.require(:product).permit(:name, :reference, :price, :quantity, :brand, :description, :category_id)
   end
 
   def find_product
     @product = Product.find(params[:id])
   end
+
+#  def bring_categories
+#    @categories = Category.all
+#  end Failed experiment
 end

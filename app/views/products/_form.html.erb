@@ -41,6 +41,11 @@
           <%= product.label :description %>
           <%= product.text_area :description, class: 'form-control'  %>
         </div>
+        <div class ="field">
+          <%=product.label :category_id %>
+          <%= product.collection_select(:category_id, Category.all, :id, :name, { prompt: true, placeholder: 'Select Category'}, { class: 'form-control'}) %>
+
+        </div>
         <div class="actions">
           <%= link_to 'Cancel', products_path,  class: 'btn btn-danger'%>
           <%= product.submit 'Save Product', class: 'btn btn-success'%>
