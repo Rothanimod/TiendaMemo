@@ -10,4 +10,6 @@
 #
 
 class Category < ApplicationRecord
+  #dependend destroy makes sure to destroy both parent-son
+  has_many :products, dependent: :destroy
 end

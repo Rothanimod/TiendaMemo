@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <h1><%= action %> Category</h1>
+      <%= form_for(@category) do |category| %>
+        <% if @category.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@category.errors.count, "error")%> prohibited this @category from being saved: </h2>
+            <ul>
+              <% @category.errors.full_messages.each do |message| %>
+                <li><%= message%> </li>
+              <%end%>
+            </ul>
+          </div>
+        <%end%>
+
+
+      <div class="form-group">
+        <div class="field">
+          <%= category.label :name %>
+          <%= category.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= category.label :description %>
+          <%= category.text_field :description, class: 'form-control' %>
+        </div>
+        <div class="actions">
+          <%= link_to 'Cancel', products_path,  class: 'btn btn-danger'%>
+          <%= category.submit 'Save Category', class: 'btn btn-success'%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
