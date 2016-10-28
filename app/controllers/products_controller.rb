@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_product, only: [:edit, :show, :destroy, :update]
+  before_action :its_admin?
   #before_action :bring_categories, only: [:edit, :new, :create] Failed experiment
   def new
     @product = Product.new
@@ -51,6 +52,12 @@ class ProductsController < ApplicationController
 
   def find_product
     @product = Product.find(params[:id])
+  end
+
+  def its_admin?
+    unless current_user.admin?
+      redirect_to root_path, :alert => "Acceso denegado, no posee permisos de administrador"
+    end
   end
 
 #  def bring_categories
