@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'pages#home'
-
+  get 'profile' => 'pages#profile'
+  get 'dashboard' => 'purchases#dashboard'
+    resources :purchases
     resources :categories
     resources :products
 

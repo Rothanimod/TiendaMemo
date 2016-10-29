@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :authenticate_user!, only: :profile
   def home
     @categories = Category.all
 
@@ -9,5 +10,12 @@ class PagesController < ApplicationController
       @products = Product.all.shuffle[0..5]
     end
   #  @products = Product.all
+  end
+
+  def profile
+    @user = current_user
+    purchases = @user.purchases
+    @paid_purchases = purchases.where(status: :paid)
+    @pending_purchases = purchases.where(status: :pending)
   end
 end

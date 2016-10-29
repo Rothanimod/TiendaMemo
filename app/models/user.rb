@@ -23,8 +23,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+#callbacks
   after_initialize :set_default_role
+  #associations
+  has_many :purchases, dependent: :destroy
 
   enum role: [ :admin, :client ]
 
