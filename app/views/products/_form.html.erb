@@ -22,6 +22,10 @@
           <%= product.text_field :name, class: 'form-control' %>
         </div>
         <div class="field">
+          <%= product.label :image %>
+          <%= product.file_field :image, class: 'form-control' %>
+        </div>
+        <div class="field">
           <%= product.label :reference %>
           <%= product.text_field :reference, class: 'form-control' %>
         </div>

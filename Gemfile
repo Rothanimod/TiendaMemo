@@ -27,9 +27,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'devise' #autentification gem 
+gem 'devise' #autentification gem
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'paperclip', '~> 5.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
