@@ -13,7 +13,7 @@ class PagesController < ApplicationController
   end
 
   def profile
-    @user = current_user
+    @user = User.find(params[:id])
     purchases = @user.purchases
     @paid_purchases = purchases.where(status: :paid)
     @pending_purchases = purchases.where(status: :pending)
