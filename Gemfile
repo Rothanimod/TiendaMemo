@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise' #autentification gem
 # Use Capistrano for deployment
+gem 'ransack'
 # gem 'capistrano-rails', group: :development
 gem 'paperclip', '~> 5.0.0'
 gem 'hirb'

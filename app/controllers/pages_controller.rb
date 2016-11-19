@@ -4,12 +4,10 @@ class PagesController < ApplicationController
     @categories = Category.all
 
     if params[:category_id].present?
-      @products = Category.find(params[:category_id]).products
-      #@products = Product.where(category_id: params[:category_id])
+      @products = Category.find(params[category_id]).products
     else
-      @products = Product.all.shuffle[0..5]
+      @products = @q.result(distinct: true)
     end
-  #  @products = Product.all
   end
 
   def profile
