@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     @categories = Category.all
 
     if params[:category_id].present?
-      @products = Category.find(params[category_id]).products
+      @products = Category.find(params[:category_id]).products
     else
       @products = @q.result(distinct: true)
     end
